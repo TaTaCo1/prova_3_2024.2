@@ -1,0 +1,22 @@
+O valor de um nó é maior ou igual ao valor de seus filhos;
+
+O Heap é uma árvore binária completa ou quase-completa
+da esquerda para a direita.
+
+Por construção, a altura de um Heap é Θ(logn)
+, pois é uma estrutura completa ou quase completa da esquerda para a direita.
+Essa propriedade permite que as operações de inserção e remoção sejam eficientes.
+
+A adição de um novo elemento sempre é feita na próxima
+posição livre do array, isto é, tail + 1. Essa estratégia
+garante que o Heap sempre será completo ou quase completo
+da esquerda para a direita.
+
+A remoção em um heap é sempre feita na raiz.
+
+Para manter a propriedade de ser completo ou quase-completo da esquerda para a direita,
+trocamos o valor da raiz com a última folha e removemos essa última folha. Note que, por ser um array,
+não removemos de fato a posição, apenas atualizamos tail (tail = tail - 1).
+
+
+
