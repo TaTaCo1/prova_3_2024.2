@@ -11,13 +11,9 @@ public class Heap {
     }
 
     public Heap(int[] heap) {
-        this.heap = heap;
+        this.heap = heap.clone();
         this.tail = this.heap.length - 1;
         this.buildHeap();
-    }
-
-    public int[] getHeap() {
-        return heap;
     }
 
     private void buildHeap() {
@@ -37,6 +33,24 @@ public class Heap {
         else {
             swap(index, indiceDoMaior);
             heapify(indiceDoMaior);
+        }
+    }
+
+    private int max_index(int index, int left, int right) {
+        if (this.heap[index] > this.heap[left]) {
+            if (isValidIndex(right)) {
+                if (this.heap[index] < this.heap[right])
+                    return right;
+            }
+            return index;
+
+        } else {
+            if (isValidIndex(right)) {
+                if (this.heap[left] < this.heap[right])
+                    return right;
+            }
+
+            return left;
         }
     }
 
@@ -72,24 +86,6 @@ public class Heap {
         }
     }
 
-    public int Kmaior(int k_maior) {
-
-        if(k_maior< 0 || k_maior - 1 > tail){
-            return -1;
-        }
-
-        Heap aux = new Heap(heap.length);;
-        for(int i = 0 ; i <= tail;i++){
-            aux.add(heap[i]);
-        }
-        int element = -1;
-        for(int i = 0 ; i < k_maior;i++){
-            element = aux.remove();
-        }
-
-        return element;
-    }
-
 
     public int remove() {
         if (isEmpty()) throw new RuntimeException("Empty");
@@ -100,24 +96,6 @@ public class Heap {
         this.heapify(0);
 
         return element;
-    }
-
-    private int max_index(int index, int left, int right) {
-        if (this.heap[index] > this.heap[left]) {
-            if (isValidIndex(right)) {
-                if (this.heap[index] < this.heap[right])
-                    return right;
-            }
-            return index;
-
-        } else {
-            if (isValidIndex(right)) {
-                if (this.heap[left] < this.heap[right])
-                    return right;
-            }
-
-            return left;
-        }
     }
 
     private boolean isValidIndex(int index) {

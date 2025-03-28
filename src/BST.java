@@ -11,10 +11,16 @@ public class BST {
         return this.root == null;
     }
 
-    /**
-     * Implementação iterativa da adição de um elemento em uma árvore binária de pequisa.
-     * @param element o valor a ser adicionado na árvore.
-     */
+    public void add(int [] elements) {
+        for(int e:  elements){
+            add(e);
+        }
+    }
+        /**
+         * Implementação iterativa da adição de um elemento em uma árvore binária de pequisa.
+         * @param element o valor a ser adicionado na árvore.
+         */
+
     public void add(int element) {
         this.size += 1;
         if (isEmpty())
@@ -174,7 +180,7 @@ public class BST {
             return null;
         }
         if(node.parent.value > node.value){
-            return node;
+            return node.parent;
         }
         return sucessorParent(node.parent);
     }

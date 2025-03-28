@@ -161,23 +161,68 @@ public class PublicTests {
     }
 
     @Test
-    public void testKmaior() {
-        Heap queue = new Heap(10);
-        queue.add(10);
-        queue.add(5);
-        queue.add(3);
-        queue.add(2);
-        queue.add(20);
+    public void testKesimo() {
+        KthFinder finder = new KthFinder();
+        int[] v = new int[] {13, 9, 5, 2, 87, 4};
 
-        assertEquals(20, queue.Kmaior(1));
-        assertEquals(10, queue.Kmaior(2));
-        assertEquals(5, queue.Kmaior(3));
-        assertEquals(3, queue.Kmaior(4));
-        assertEquals(2, queue.Kmaior(5));
+        assertEquals(87, finder.kesimo(v, 1));
+        assertEquals(13, finder.kesimo(v, 2));
+        assertEquals(9, finder.kesimo(v, 3));
+        assertEquals(5, finder.kesimo(v, 4));
+        assertEquals(4, finder.kesimo(v, 5));
+        assertEquals(2, finder.kesimo(v, 6));
 
+        assertEquals(5, finder.kesimo(new int[]{3, 2, 1, 5, 6, 4}, 2));
 
+        int[] x = new int[] {37, 0, 45, 2, 87, 103};
+        assertEquals(103, finder.kesimo(x, 1));
+        assertEquals(87, finder.kesimo(x, 2));
+        assertEquals(45, finder.kesimo(x, 3));
+        assertEquals(37, finder.kesimo(x, 4));
+        assertEquals(2, finder.kesimo(x, 5));
+        assertEquals(0, finder.kesimo(x, 6));
+
+        int[] y = new int[] {1, 2, 3, 4, 5, 6};
+        assertEquals(6, finder.kesimo(y, 1));
+        assertEquals(5, finder.kesimo(y, 2));
+        assertEquals(4, finder.kesimo(y, 3));
+        assertEquals(3, finder.kesimo(y, 4));
+        assertEquals(2, finder.kesimo(y, 5));
+        assertEquals(1, finder.kesimo(y, 6));
+        assertEquals(-1, finder.kesimo(y, 7));
+
+    }
+
+    @Test
+    public void printNivel() {
+        BST bst = new BST();
+        bst.add(new int[] {36,78,95,58, 61, 15, 1, 48, 23, 8, 68, 56, 37, 86, 14, 22, 44, 46, 17, 19});
+
+        assertEquals("36", bst.printNivel(0));
+        assertEquals("15 78", bst.printNivel(1));
+        assertEquals("1 23 58 95", bst.printNivel(2));
+        assertEquals("8 22 48 61 86", bst.printNivel(3));
+        assertEquals("14 17 37 56 68", bst.printNivel(4));
+        assertEquals("19 44", bst.printNivel(5));
+        assertEquals("46", bst.printNivel(6));
+    }
+
+    @Test
+    public void printNivel2() {
+        BST bst = new BST();
+
+        int [] list = new int[] {13, 20, 18, 25, 23};
+        for(int e:list){
+            bst.add(e);
+        }
+        assertEquals("13", bst.printNivel(0));
+        assertEquals("20", bst.printNivel(1));
+        assertEquals("18 25", bst.printNivel(2));
+        assertEquals("23", bst.printNivel(3));
 
     }
 
 
+
 }
+
